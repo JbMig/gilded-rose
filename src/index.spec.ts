@@ -1,7 +1,7 @@
 import runGoldenMaster from "jest-golden-master";
 import { Item ,GildedRose } from ".";
 
-test('Scenario 1 : Mise à jour de Sulfuras (aucune modification)', async () => {
+test('Scenario 1 : Updating of Sulfuras (no modification)', async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Sulfuras, Hand of Ragnaros', 0, 80)];
@@ -16,7 +16,7 @@ test('Scenario 1 : Mise à jour de Sulfuras (aucune modification)', async () => 
     });
 });
 
-test("Scenario 2 : Mise à jour d'un élément normal", async () => {
+test("Scenario 2 : Updating of a normal item", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Normal Item', 10, 20)];
@@ -31,7 +31,7 @@ test("Scenario 2 : Mise à jour d'un élément normal", async () => {
     });
 });
 
-test("Scenario 3 : Mise à jour d'un élément normal avec une qualité minimale", async () => {
+test("Scenario 3 : Updating of a normal item when quality = 0", async () => {
 	runGoldenMaster(async () => {
 	    // GIVEN
 	    const items = [new Item('Normal Item', 10, 0)];
@@ -47,7 +47,7 @@ test("Scenario 3 : Mise à jour d'un élément normal avec une qualité minimale
 });
     
 
-test("Scenario 4 : Mise à jour d'un élément normal avec un sellIn négatif", async () => {
+test("Scenario 4 : Updating of a normal item when sellIn < 0", async () => {
 	runGoldenMaster(async () => {
 	    // GIVEN
 	    const items = [new Item('Normal Item', 0, 30)];
@@ -58,11 +58,11 @@ test("Scenario 4 : Mise à jour d'un élément normal avec un sellIn négatif", 
     
 	    // THEN
 	    expect(items[0].sellIn).toEqual(-1);
-	    expect(items[0].quality).toEqual(28); // La qualité diminue deux fois plus vite.
+	    expect(items[0].quality).toEqual(28);
 	});
 });
     
-test("Scenario 5 : Mise à jour d'Aged Brie", async () => {
+test("Scenario 5 : Updating of Aged Brie", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Aged Brie', 5, 30)];
@@ -77,7 +77,7 @@ test("Scenario 5 : Mise à jour d'Aged Brie", async () => {
     });
 });
 
-test("Scenario 6 : Mise à jour d'Aged Brie avec une qualité maximale", async () => {
+test("Scenario 6 : Updating of Aged Brie when quality = 50", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Aged Brie', 10, 50)];
@@ -92,7 +92,7 @@ test("Scenario 6 : Mise à jour d'Aged Brie avec une qualité maximale", async (
     });
 });
 
-test("Scenario 7 : Mise à jour d'Aged Brie après la date de vente", async () => {
+test("Scenario 7 : Updating of Aged Brie when sellIn < 0", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Aged Brie', 0, 30)];
@@ -107,7 +107,7 @@ test("Scenario 7 : Mise à jour d'Aged Brie après la date de vente", async () =
     });
 });
 
-test("Scenario 8 : Mise à jour de Backstage Passes", async () => {
+test("Scenario 8 : Updating of Backstage Passes", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 15, 40)];
@@ -122,10 +122,10 @@ test("Scenario 8 : Mise à jour de Backstage Passes", async () => {
     });
 });
 
-test("Scenario 9 : Mise à jour de Backstage Passes avec une date de concert proche", async () => {
+test("Scenario 9 : Updating of Backstage Passes when sellIn < 10", async () => {
     runGoldenMaster(async () => {
         // GIVEN
-        const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 6, 30)]; // Le concert est dans 6 jours.
+        const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 6, 30)];
         const gildedRose = new GildedRose(items);
 
         // WHEN
@@ -133,14 +133,14 @@ test("Scenario 9 : Mise à jour de Backstage Passes avec une date de concert pro
 
         // THEN
         expect(items[0].sellIn).toEqual(5);
-        expect(items[0].quality).toEqual(32); // La qualité augmente de 2 lorsque la date du concert est dans moins de 10 jours.
+        expect(items[0].quality).toEqual(32);
     });
 });
 
-test("Scenario 10 : Mise à jour de Backstage Passes avec une date de concert très proche", async () => {
+test("Scenario 10 : Updating of Backstage Passes when sellIn < 5", async () => {
     runGoldenMaster(async () => {
         // GIVEN
-        const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 3, 30)]; // Le concert est dans 3 jours.
+        const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 3, 30)];
         const gildedRose = new GildedRose(items);
 
         // WHEN
@@ -148,14 +148,14 @@ test("Scenario 10 : Mise à jour de Backstage Passes avec une date de concert tr
 
         // THEN
         expect(items[0].sellIn).toEqual(2);
-        expect(items[0].quality).toEqual(33); // La qualité augmente de 3 lorsque la date du concert est dans moins de 5 jours.
+        expect(items[0].quality).toEqual(33);
     });
 });
 
-test("Scenario 11 : Mise à jour de Backstage Passes avec une date de concert dépassée", async () => {
+test("Scenario 11 : Updating of Backstage Passes when sellIn < 0", async () => {
     runGoldenMaster(async () => {
         // GIVEN
-        const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 30)]; // Le concert est aujourd'hui ou déjà passé.
+        const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 30)];
         const gildedRose = new GildedRose(items);
 
         // WHEN
@@ -163,11 +163,11 @@ test("Scenario 11 : Mise à jour de Backstage Passes avec une date de concert d�
 
         // THEN
         expect(items[0].sellIn).toEqual(-1);
-        expect(items[0].quality).toEqual(0); // La qualité tombe à zéro.
+        expect(items[0].quality).toEqual(0);
     });
 });
 
-test("Scenario 12 : Mise à jour de Conjured Item", async () => {
+test("Scenario 12 : Updating of Conjured Item", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Conjured Item', 10, 20)];
@@ -178,11 +178,11 @@ test("Scenario 12 : Mise à jour de Conjured Item", async () => {
 
         // THEN
         expect(items[0].sellIn).toEqual(9);
-        expect(items[0].quality).toEqual(18); // La qualité diminue deux fois plus vite que pour un objet normal.
+        expect(items[0].quality).toEqual(18);
     });
 });
 
-test("Scenario 13 : Mise à jour de Conjured Item avec sellIn négatif", async () => {
+test("Scenario 13 : Updating of Conjured Item when sellIn < 0>", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Conjured Item', 0, 20)];
@@ -193,6 +193,6 @@ test("Scenario 13 : Mise à jour de Conjured Item avec sellIn négatif", async (
 
         // THEN
         expect(items[0].sellIn).toEqual(-1);
-        expect(items[0].quality).toEqual(16); // La qualité diminue deux fois plus vite que pour un sellIn >=0, donc ça diminue de 4.
+        expect(items[0].quality).toEqual(16);
     });
 });
