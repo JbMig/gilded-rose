@@ -182,7 +182,7 @@ test("Scenario 12 : Updating of Conjured Item", async () => {
     });
 });
 
-test("Scenario 13 : Updating of Conjured Item when sellIn < 0>", async () => {
+test("Scenario 13 : Updating of Conjured Item when sellIn < 0", async () => {
     runGoldenMaster(async () => {
         // GIVEN
         const items = [new Item('Conjured Item', 0, 20)];

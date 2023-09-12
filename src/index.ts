@@ -19,9 +19,10 @@ export class Item {
     
     updateQuality() {
         this.items.forEach(item => {
-            console.log("Item Name : " + item.name);
-            console.log("SellIn : " + item.sellIn);
-            console.log("Quality : " + item.quality);
+			// Logs for the golden master
+            // console.log("Item Name : " + item.name);
+            // console.log("SellIn : " + item.sellIn);
+            // console.log("Quality : " + item.quality);
             if (item.name !== 'Sulfuras, Hand of Ragnaros') {
                 item.sellIn -= 1;
         
@@ -35,8 +36,9 @@ export class Item {
                     this.updateNormalItemQuality(item);
                 }
             }
-            console.log("Updated SellIn : " + item.sellIn);
-            console.log("Updated Quality : " + item.quality);
+            // Logs for the golden master
+            // console.log("Updated SellIn : " + item.sellIn);
+            // console.log("Updated Quality : " + item.quality);
         });
         return this.items;
     }
