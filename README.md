@@ -1,3 +1,9 @@
+# Notes from Group 9
+
+Since the project used so few files, it would have been complicated to all work at the same time without creating conflicts in the project. Tharefore, we used pair programming all along those two days. Thus, it's important to note that, even though Jean-Baptiste and Valentine are the only ones to have pushed some commits on GitHub, everyone did their part of the work.
+Thank you for your understanding.
+Group 9 : Jean-Baptiste Migone, Adrien Quimbre, Victorien Guillerd and Valentine Lefebvre
+
 # gilded-rose
 
 ## Specification
