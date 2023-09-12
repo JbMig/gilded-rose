@@ -109,3 +109,23 @@ exports[`Scenario 11 : Updating of Backstage Passes when sellIn < 0 1`] = `
   "Updated Quality : 0",
 ]
 `;
+
+exports[`Scenario 12 : Updating of Conjured Item 1`] = `
+[
+  "Item Name : Conjured Item",
+  "SellIn : 10",
+  "Quality : 20",
+  "Updated SellIn : 9",
+  "Updated Quality : 18",
+]
+`;
+
+exports[`Scenario 13 : Updating of Conjured Item when sellIn < 0> 1`] = `
+[
+  "Item Name : Conjured Item",
+  "SellIn : 0",
+  "Quality : 20",
+  "Updated SellIn : -1",
+  "Updated Quality : 16",
+]
+`;
